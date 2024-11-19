@@ -7,7 +7,10 @@ import transporter from './emailConfig.js';
 
 dotenv.config();
 const app = express();
-app.use(cors())
+// app.use(cors())
+app.use(cors({
+    origin: 'https://noorfatimaqureshi.vercel.app', // Allow only your frontend's domain
+  }));
 app.use(bodyParser.json()); //Middleware
 
 
