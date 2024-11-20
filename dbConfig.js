@@ -4,7 +4,7 @@ import { neon } from '@neondatabase/serverless';
 import dotenv from "dotenv";
 dotenv.config();
 
-const conn = neon(`${process.env.DATABASE_URL}`);
+const conn = neon(`${process.env.portfolio_DATABASE_URL}`);
 async function getPgVersion() {
     const result = await conn`SELECT version()`;
     console.log(result[0]);
