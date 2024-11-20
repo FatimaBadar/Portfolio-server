@@ -4,6 +4,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export default async function handler(req, res) {
+     // Set CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "https://noorfatimaqureshi.vercel.app");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version");
+
   if (req.method === "POST") {
     const firstname = req.body.EmailPayload.firstname;
     const lastname = req.body.EmailPayload.lastname;
