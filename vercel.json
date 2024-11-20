@@ -1,13 +1,9 @@
 {
   "version": 2,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/getProjects",
-      "dest": "/api/getProjects.js"
-    },
-    {
-      "src": "/api/contactMe",
-      "dest": "/api/contactMe.js"
+      "source": "/(.*)",
+      "destination": "/api"
     }
   ],
   "functions": {
