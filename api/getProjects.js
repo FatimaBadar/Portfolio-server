@@ -1,16 +1,18 @@
-import express from 'express';
-import conn from '../dbConfig.js';
+import conn from "../dbConfig.js";
 
-const router = express.Router();
-router.get('/', async (req, res) => {
+export default async function handler(req, res) {
+  if (req.method === "GET") {
     try {
-        const result = await conn`SELECT * FROM projects`;
-        return res.status(200).json({
-          message: 'Fetched projects successfully',
-          data: result,
-        });
-      } catch (error) {
-        return res.status(500).json({ message: 'Error fetching projects', error: error.message });
-      }
-});
-export default router;
+      const result = await conn`SELECT * FROM projects`;
+      return res
+        .status(200)
+        .json({ message: "Fetched Project data successfully", data: result });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: `Error fetching projects: ${error.message}` });
+    }
+  } else {
+    return res.status(405).json({ message: "Method Not Allowed" });
+  }
+}
