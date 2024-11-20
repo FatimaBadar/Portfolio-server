@@ -6,7 +6,7 @@ dotenv.config();
 
 const conn = neon(`${process.env.DATABASE_URL}`);
 async function getPgVersion() {
-    const result = await sql`SELECT version()`;
+    const result = await conn`SELECT version()`;
     console.log(result[0]);
 }
 getPgVersion()
