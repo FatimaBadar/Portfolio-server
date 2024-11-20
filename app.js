@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from "dotenv";
 import api from './api/index.js';
+import bodyParser from 'body-parser';
 
 dotenv.config();
 const app = express();
@@ -13,7 +14,7 @@ const corsOptions = {
   };
   
   app.use(cors(corsOptions));
-  app.use(express.json());
+  app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.json({
