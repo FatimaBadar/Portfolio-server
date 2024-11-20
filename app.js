@@ -16,15 +16,21 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json()); //Middleware
 
-
-app.get('/api/getProjects', (req, res) => {
-    conn.query('SELECT * from projects', (err, results) => {
-        if(err){
-            console.error(err.message)
-            return res.status(500).json({message: 'Couldnt fetched Project data'})
-        }
+app.get('/api/getProjects', async (req, res) => {
+    const result = await conn`SELECT * from projects`;
+    if(result){
         return res.status(200).json({message: 'Fetched Project data successfully', data: results})
-    })
+    }
+    else{
+        return res.status(500).json({message: 'Couldnt fetched Project data'})
+    }
+    //  conn('SELECT * from projects', (err, results) => {
+    //     if(err){
+    //         console.error(err.message)
+    //         return res.status(500).json({message: 'Couldnt fetched Project data'})
+    //     }
+    //     return res.status(200).json({message: 'Fetched Project data successfully', data: results})
+    // })
 })
 
 app.post('/api/contactMe', (req, res) => {
@@ -41,7 +47,7 @@ app.post('/api/contactMe', (req, res) => {
             from: process.env.EMAIL_USER, 
             to: email,
             subject: 'Portfolio contact form', 
-            text: message, 
+            text: `From: ${firstname} ${lastname}:\n ${message}`, 
         };
         
         transporter.sendMail(mailOptions, (error, info) => {
