@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 const corsOptions = {
     origin: 'https://noorfatimaqureshi.vercel.app', 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], 
     allowedHeaders: ['Content-Type', 'Authorization'],
   };
   
