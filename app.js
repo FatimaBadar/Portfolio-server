@@ -44,8 +44,8 @@ app.post('/api/contactMe', (req, res) => {
 
         //Send email       
         let mailOptions = {
-            from: process.env.EMAIL_USER, 
-            to: email,
+            from: email, 
+            to: process.env.EMAIL_USER,
             subject: 'Portfolio contact form', 
             text: `From: ${firstname} ${lastname}:\n ${message}`, 
         };
