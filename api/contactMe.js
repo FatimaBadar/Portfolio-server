@@ -1,15 +1,11 @@
+import express from "express";
 import transporter from "../emailConfig.js";
 import dotenv from "dotenv";
 
 dotenv.config();
+const router = express.Router()
 
-export default async function handler(req, res) {
-     // Set CORS headers
-  res.setHeader("Access-Control-Allow-Origin", "https://noorfatimaqureshi.vercel.app");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version");
-
-  if (req.method === "POST") {
+router.post('/', async (req, res) => {
     const firstname = req.body.EmailPayload.firstname;
     const lastname = req.body.EmailPayload.lastname;
     const email = req.body.EmailPayload.email;
@@ -34,5 +30,6 @@ export default async function handler(req, res) {
     } else {
       return res.status(500).json({ message: "No data in contact form" });
     }
-  }
-}
+  });
+
+export default router;
