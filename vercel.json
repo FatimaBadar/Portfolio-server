@@ -1,20 +1,14 @@
 {
   "version": 2,
   "functions": {
-    "api/*.js": {
-      "maxDuration": 4
+    "api/index.js": {
+      "maxDuration": 5
     }
   },
   "routes": [
     {
-      "src": "/api/getProjects",
-      "dest": "/api/getProjects.js",
-      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
-    },
-    {
-      "src": "/api/contactMe",
-      "dest": "/api/contactMe.js",
-      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+      "src": "/api/(.*)",
+      "dest": "/api/index.js"
     }
   ]
 }
