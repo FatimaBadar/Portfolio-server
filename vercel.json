@@ -10,5 +10,12 @@
     "api/*.js": {
       "maxDuration": 4
     }
-  }
+  },
+  "routes": [
+    {
+      "src": "/api/getProjects",
+      "dest": "/api/getProjects.js",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+    }
+  ]
 }
