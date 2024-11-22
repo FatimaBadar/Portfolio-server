@@ -8,17 +8,23 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-    origin: 'https://noorfatimaqureshi.vercel.app', 
+    origin: '*',
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], 
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  };
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'Accept',
+      'Origin',
+      'Access-Control-Allow-Origin'
+    ],  };
   
   app.use(cors(corsOptions));
   app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.json({
-      message: 'Express js Backend 🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+      message: 'Express js Backend',
     });
   });
 app.use('/api', api);
