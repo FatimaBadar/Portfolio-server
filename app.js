@@ -2,25 +2,18 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from "dotenv";
 import api from './api/index.js';
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
 
 dotenv.config();
 const app = express();
 
 const corsOptions = {
-    origin: '*',
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], 
-    allowedHeaders: [
-      'Content-Type',
-      'Authorization',
-      'X-Requested-With',
-      'Accept',
-      'Origin',
-      'Access-Control-Allow-Origin'
-    ],  };
-  
+  origin: 'https://noorfatimaqureshi.vercel.app', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+};
   app.use(cors(corsOptions));
-  app.use(bodyParser.json());
+  app.use(express.json());
 
 app.get('/', (req, res) => {
     res.json({
