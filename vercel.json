@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "functions": {
-    "api/index.js": {
-      "maxDuration": 5
-    }
-  },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/index.js"
+      "dest": "/api/$1"
     }
-  ]
+  ],
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 5
+    }
+  }
 }
