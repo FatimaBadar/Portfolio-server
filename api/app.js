@@ -20,10 +20,10 @@ app.get('/', (req, res) => {
   });
 app.use('/api', api);
 
-// Local server listening
-const PORT = process.env.PORT; // Default to 3000 if no environment variable is set
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+// // Local server listening
+// const PORT = process.env.PORT; // Default to 3000 if no environment variable is set
+// app.listen(PORT, () => {
+//   console.log(`Server is running`);
+// });
 
 export default app;

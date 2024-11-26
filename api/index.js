@@ -9,5 +9,4 @@ router.get('/', (req, res) => {
   });
   
 router.use('/contactMe', contactMe);
-
 export default router;
