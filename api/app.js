@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from "dotenv";
-import api from './api/index.js';
+import api from './index.js';
 // import bodyParser from 'body-parser';
 
 dotenv.config();
@@ -16,11 +16,14 @@ const corsOptions = {
   app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.json({
-      message: 'Express js Backend',
-    });
+    res.send('Express js Backend');
   });
 app.use('/api', api);
-  
-app.listen(process.env.PORT);
-console.log("server is running")
+
+// Local server listening
+const PORT = process.env.PORT; // Default to 3000 if no environment variable is set
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+export default app;

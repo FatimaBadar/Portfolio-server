@@ -1,5 +1,5 @@
 import express from "express";
-import transporter from "../emailConfig.js";
+import transporter from "../emailConfig.js"
 import dotenv from "dotenv";
 
 dotenv.config();
