@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
       from: email,
       to: process.env.EMAIL_USER,
       subject: "Portfolio contact form",
-      text: `From: ${firstname} ${lastname}:\n ${message}`,
+      text: `From: ${firstname} ${lastname} (${email}):\n\n   ${message}`,
     };
 
     try {
